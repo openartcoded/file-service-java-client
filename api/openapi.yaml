@@ -1,0 +1,548 @@
+openapi: 3.1.0
+info:
+  description: File Api V1
+  license:
+    name: ""
+  title: FileApi
+  version: "0.1"
+servers:
+- url: /
+paths:
+  /api/v1/template:
+    post:
+      operationId: upsert
+      parameters:
+      - explode: true
+        in: query
+        name: _id
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: title
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: description
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: templateType
+        required: true
+        schema:
+          $ref: "#/components/schemas/TemplateType"
+        style: form
+      - explode: true
+        in: query
+        name: templateContext
+        required: true
+        schema:
+          $ref: "#/components/schemas/Context"
+        style: form
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/upsert_request"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TemplateV2"
+          description: Upsert a template
+      tags:
+      - template::routes
+      x-content-type: multipart/form-data
+      x-accepts:
+      - application/json
+  /api/v1/template/find-all:
+    get:
+      operationId: find_all
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/TemplateV2"
+                type: array
+          description: Find all templates
+      tags:
+      - template::routes
+      x-accepts:
+      - application/json
+  /api/v1/template/find-by-context:
+    get:
+      operationId: find_by_context
+      parameters:
+      - explode: true
+        in: query
+        name: context
+        required: true
+        schema:
+          $ref: "#/components/schemas/Context"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/TemplateV2"
+                type: array
+          description: Find templates by context
+      tags:
+      - template::routes
+      x-accepts:
+      - application/json
+  /api/v1/template/find-by-ids:
+    get:
+      operationId: find_by_ids
+      parameters:
+      - explode: true
+        in: query
+        name: ids
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/TemplateV2"
+                type: array
+          description: Find By ids
+      tags:
+      - template::routes
+      x-accepts:
+      - application/json
+  /api/v1/template/find-by-type:
+    get:
+      operationId: find_by_type
+      parameters:
+      - explode: true
+        in: query
+        name: template_type
+        required: true
+        schema:
+          $ref: "#/components/schemas/TemplateType"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/TemplateV2"
+                type: array
+          description: Find templates by type
+      tags:
+      - template::routes
+      x-accepts:
+      - application/json
+  /api/v1/template/find-one/{templ_id}:
+    get:
+      operationId: find_one
+      parameters:
+      - explode: false
+        in: path
+        name: templ_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TemplateV2"
+          description: Find a template by id
+      tags:
+      - template::routes
+      x-accepts:
+      - application/json
+  /api/v1/template/render:
+    post:
+      operationId: render
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RenderRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                format: binary
+                type: string
+          description: Render template
+      tags:
+      - template::routes
+      x-content-type: application/json
+      x-accepts:
+      - '*/*'
+  /api/v1/template/{id}:
+    delete:
+      operationId: delete_templ_by_id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Delete a template by id
+      tags:
+      - template::routes
+      x-accepts:
+      - application/json
+  /api/v1/upload:
+    post:
+      operationId: upload
+      parameters:
+      - explode: true
+        in: query
+        name: correlation_id
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: is_public
+        required: false
+        schema:
+          nullable: true
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: without_thumbnail
+        required: false
+        schema:
+          nullable: true
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/upsert_request"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileUploadV2"
+          description: Upload a file
+      tags:
+      - upload::routes
+      x-content-type: multipart/form-data
+      x-accepts:
+      - application/json
+  /api/v1/upload/download:
+    get:
+      operationId: download
+      parameters:
+      - explode: true
+        in: query
+        name: id
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                format: binary
+                type: string
+          description: Download file
+      tags:
+      - upload::routes
+      x-accepts:
+      - '*/*'
+  /api/v1/upload/find-all:
+    get:
+      operationId: find_all_uploads
+      parameters:
+      - explode: true
+        in: query
+        name: correlationId
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/FileUploadV2"
+                type: array
+          description: Find all upload
+      tags:
+      - upload::routes
+      x-accepts:
+      - application/json
+  /api/v1/upload/metadata:
+    get:
+      operationId: metadata
+      parameters:
+      - explode: true
+        in: query
+        name: id
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileUploadV2"
+          description: Get upload metadata
+      tags:
+      - upload::routes
+      x-accepts:
+      - application/json
+  /api/v1/upload/{id}:
+    delete:
+      operationId: delete_by_id
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Delete a file by id
+      tags:
+      - upload::routes
+      x-accepts:
+      - application/json
+components:
+  schemas:
+    Context:
+      enum:
+      - INVOICE
+      - PEPPOL
+      - C_V
+      type: string
+    DownloadFileRequestUriParams:
+      properties:
+        id:
+          type: string
+      required:
+      - id
+    FileUploadV2:
+      example:
+        bookmarkedDate: 2000-01-23T04:56:07.000+00:00
+        extension: extension
+        bookmarked: true
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        creationDate: 2000-01-23T04:56:07.000+00:00
+        publicResource: true
+        size: 0
+        name: name
+        correlationId: correlationId
+        thumbnailId: thumbnailId
+        _id: _id
+        contentType: contentType
+        originalFilename: originalFilename
+      properties:
+        _id:
+          type: string
+        bookmarked:
+          nullable: true
+          type: boolean
+        bookmarkedDate:
+          format: date-time
+          nullable: true
+          type: string
+        contentType:
+          nullable: true
+          type: string
+        correlationId:
+          nullable: true
+          type: string
+        creationDate:
+          format: date-time
+          type: string
+        extension:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        originalFilename:
+          type: string
+        publicResource:
+          type: boolean
+        size:
+          format: int64
+          minimum: 0
+          type: integer
+        thumbnailId:
+          nullable: true
+          type: string
+        updatedDate:
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - _id
+      - creationDate
+      - originalFilename
+      - publicResource
+      - size
+    FindAllQueryParams:
+      properties:
+        correlationId:
+          nullable: true
+          type: string
+    OpenApiBinaryResponse:
+      format: binary
+      type: string
+    RenderRequest:
+      example:
+        fileName: fileName
+        templateContext: INVOICE
+        context: ""
+        templateId: templateId
+      properties:
+        context: {}
+        fileName:
+          type: string
+        templateContext:
+          $ref: "#/components/schemas/Context"
+        templateId:
+          type: string
+      required:
+      - context
+      - fileName
+      - templateContext
+      - templateId
+    TemplateType:
+      enum:
+      - HTML
+      - XML
+      type: string
+    TemplateUpsert:
+      properties:
+        _id:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        templateContext:
+          $ref: "#/components/schemas/Context"
+        templateType:
+          $ref: "#/components/schemas/TemplateType"
+        title:
+          type: string
+      required:
+      - templateContext
+      - templateType
+      - title
+    TemplateV2:
+      example:
+        templateType: HTML
+        templateContext: INVOICE
+        description: description
+        _id: _id
+        updatedDate: 2000-01-23T04:56:07.000+00:00
+        creationDate: 2000-01-23T04:56:07.000+00:00
+        title: title
+        fileId: fileId
+      properties:
+        _id:
+          type: string
+        creationDate:
+          format: date-time
+          type: string
+        description:
+          nullable: true
+          type: string
+        fileId:
+          type: string
+        templateContext:
+          $ref: "#/components/schemas/Context"
+        templateType:
+          $ref: "#/components/schemas/TemplateType"
+        title:
+          type: string
+        updatedDate:
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - _id
+      - creationDate
+      - fileId
+      - templateContext
+      - templateType
+      - title
+    UploadFileRequestUriParams:
+      properties:
+        correlation_id:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+        is_public:
+          nullable: true
+          type: boolean
+        without_thumbnail:
+          nullable: true
+          type: boolean
+    upsert_request:
+      properties:
+        file_bytes:
+          format: binary
+          type: string
+      required:
+      - file_bytes
+
