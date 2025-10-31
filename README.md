@@ -1,8 +1,8 @@
 # openapi-java-client
 
 FileApi
-- API version: 0.1
-  - Build date: 2025-10-30T21:45:34.503460199+01:00[Europe/Brussels]
+- API version: 0.2
+  - Build date: 2025-10-31T20:35:04.006332485+01:00[Europe/Brussels]
   - Generator version: 7.17.0
 
 File Api V1
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>openapi-java-client</artifactId>
-  <version>0.1</version>
+  <version>0.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "org.openapitools:openapi-java-client:0.1"
+     implementation "org.openapitools:openapi-java-client:0.2"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/openapi-java-client-0.1.jar`
+* `target/openapi-java-client-0.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
