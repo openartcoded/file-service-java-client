@@ -7,7 +7,9 @@ All URIs are relative to *http://localhost*
 | [**deleteById**](UploadRoutesApi.md#deleteById) | **DELETE** /api/v1/upload/{id} |  |
 | [**download**](UploadRoutesApi.md#download) | **GET** /api/v1/upload/download |  |
 | [**findAllUploads**](UploadRoutesApi.md#findAllUploads) | **GET** /api/v1/upload/find-all |  |
+| [**makeThumb**](UploadRoutesApi.md#makeThumb) | **POST** /api/v1/upload/{id}/make-thumb |  |
 | [**metadata**](UploadRoutesApi.md#metadata) | **GET** /api/v1/upload/metadata |  |
+| [**ping**](UploadRoutesApi.md#ping) | **GET** /api/v1/upload/ping |  |
 | [**upload**](UploadRoutesApi.md#upload) | **POST** /api/v1/upload |  |
 
 
@@ -190,6 +192,66 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | Find all upload |  -  |
 
+<a id="makeThumb"></a>
+# **makeThumb**
+> FileUploadV2 makeThumb(id)
+
+
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.UploadRoutesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+
+    UploadRoutesApi apiInstance = new UploadRoutesApi(defaultClient);
+    String id = "id_example"; // String | 
+    try {
+      FileUploadV2 result = apiInstance.makeThumb(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UploadRoutesApi#makeThumb");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String**|  | |
+
+### Return type
+
+[**FileUploadV2**](FileUploadV2.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Make thumbnail |  -  |
+
 <a id="metadata"></a>
 # **metadata**
 > FileUploadV2 metadata(id)
@@ -249,6 +311,61 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Get upload metadata |  -  |
+
+<a id="ping"></a>
+# **ping**
+> ping()
+
+
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.UploadRoutesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+
+    UploadRoutesApi apiInstance = new UploadRoutesApi(defaultClient);
+    try {
+      apiInstance.ping();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UploadRoutesApi#ping");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ping |  -  |
 
 <a id="upload"></a>
 # **upload**

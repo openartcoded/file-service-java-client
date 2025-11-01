@@ -4,7 +4,7 @@ info:
   license:
     name: ""
   title: FileApi
-  version: "0.3"
+  version: "0.4"
 servers:
 - url: /
 paths:
@@ -343,6 +343,16 @@ paths:
       - upload::routes
       x-accepts:
       - application/json
+  /api/v1/upload/ping:
+    get:
+      operationId: ping
+      responses:
+        "200":
+          description: Ping
+      tags:
+      - upload::routes
+      x-accepts:
+      - application/json
   /api/v1/upload/{id}:
     delete:
       operationId: delete_by_id
@@ -357,6 +367,28 @@ paths:
       responses:
         "200":
           description: Delete a file by id
+      tags:
+      - upload::routes
+      x-accepts:
+      - application/json
+  /api/v1/upload/{id}/make-thumb:
+    post:
+      operationId: make_thumb
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileUploadV2"
+          description: Make thumbnail
       tags:
       - upload::routes
       x-accepts:
