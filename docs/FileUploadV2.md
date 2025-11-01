@@ -18,6 +18,7 @@
 |**originalFilename** | **String** |  |  |
 |**publicResource** | **Boolean** |  |  |
 |**size** | **Long** |  |  |
+|**thumb** | **Boolean** |  |  [optional] |
 |**thumbnailId** | **String** |  |  [optional] |
 |**updatedDate** | **OffsetDateTime** |  |  [optional] |
 

@@ -4,7 +4,7 @@ info:
   license:
     name: ""
   title: FileApi
-  version: "0.2"
+  version: "0.3"
 servers:
 - url: /
 paths:
@@ -379,6 +379,7 @@ components:
       example:
         bookmarkedDate: 2000-01-23T04:56:07.000+00:00
         extension: extension
+        thumb: true
         bookmarked: true
         updatedDate: 2000-01-23T04:56:07.000+00:00
         creationDate: 2000-01-23T04:56:07.000+00:00
@@ -423,6 +424,9 @@ components:
           format: int64
           minimum: 0
           type: integer
+        thumb:
+          nullable: true
+          type: boolean
         thumbnailId:
           nullable: true
           type: string
