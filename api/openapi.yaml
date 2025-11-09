@@ -4,7 +4,7 @@ info:
   license:
     name: ""
   title: FileApi
-  version: "0.7"
+  version: "0.8"
 servers:
 - url: /
 paths:
@@ -407,6 +407,59 @@ paths:
           description: Make thumbnail
       tags:
       - upload::routes
+      x-accepts:
+      - application/json
+  /api/v1/upload/{id}/update:
+    post:
+      operationId: upload_update
+      parameters:
+      - explode: false
+        in: path
+        name: correlation_id
+        required: true
+        schema:
+          nullable: true
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: is_public
+        required: true
+        schema:
+          nullable: true
+          type: boolean
+        style: simple
+      - explode: false
+        in: path
+        name: without_thumbnail
+        required: true
+        schema:
+          nullable: true
+          type: boolean
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/upsert_request"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileUploadV2"
+          description: Upload a file
+      tags:
+      - upload::routes
+      x-content-type: multipart/form-data
       x-accepts:
       - application/json
 components:

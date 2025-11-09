@@ -1,8 +1,8 @@
 # openapi-java-client
 
 FileApi
-- API version: 0.7
-  - Build date: 2025-11-09T15:12:30.225143996+01:00[Europe/Brussels]
+- API version: 0.8
+  - Build date: 2025-11-09T19:41:02.387928936+01:00[Europe/Brussels]
   - Generator version: 7.17.0
 
 File Api V1
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>openapi-java-client</artifactId>
-  <version>0.7</version>
+  <version>0.8</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "org.openapitools:openapi-java-client:0.7"
+     implementation "org.openapitools:openapi-java-client:0.8"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/openapi-java-client-0.7.jar`
+* `target/openapi-java-client-0.8.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -130,6 +130,7 @@ Class | Method | HTTP request | Description
 *UploadRoutesApi* | [**metadata**](docs/UploadRoutesApi.md#metadata) | **GET** /api/v1/upload/metadata | 
 *UploadRoutesApi* | [**ping**](docs/UploadRoutesApi.md#ping) | **GET** /api/v1/upload/ping | 
 *UploadRoutesApi* | [**upload**](docs/UploadRoutesApi.md#upload) | **POST** /api/v1/upload | 
+*UploadRoutesApi* | [**uploadUpdate**](docs/UploadRoutesApi.md#uploadUpdate) | **POST** /api/v1/upload/{id}/update | 
 
 
 ## Documentation for Models

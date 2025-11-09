@@ -12,6 +12,7 @@ All URIs are relative to *http://localhost*
 | [**metadata**](UploadRoutesApi.md#metadata) | **GET** /api/v1/upload/metadata |  |
 | [**ping**](UploadRoutesApi.md#ping) | **GET** /api/v1/upload/ping |  |
 | [**upload**](UploadRoutesApi.md#upload) | **POST** /api/v1/upload |  |
+| [**uploadUpdate**](UploadRoutesApi.md#uploadUpdate) | **POST** /api/v1/upload/{id}/update |  |
 
 
 <a id="deleteById"></a>
@@ -479,6 +480,74 @@ public class Example {
 ### Return type
 
 [**List&lt;FileUploadV2&gt;**](FileUploadV2.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Upload a file |  -  |
+
+<a id="uploadUpdate"></a>
+# **uploadUpdate**
+> FileUploadV2 uploadUpdate(correlationId, isPublic, withoutThumbnail, id, files)
+
+
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.UploadRoutesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+
+    UploadRoutesApi apiInstance = new UploadRoutesApi(defaultClient);
+    String correlationId = "correlationId_example"; // String | 
+    Boolean isPublic = true; // Boolean | 
+    Boolean withoutThumbnail = true; // Boolean | 
+    String id = "id_example"; // String | 
+    List<File> files = Arrays.asList(); // List<File> | 
+    try {
+      FileUploadV2 result = apiInstance.uploadUpdate(correlationId, isPublic, withoutThumbnail, id, files);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UploadRoutesApi#uploadUpdate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **correlationId** | **String**|  | |
+| **isPublic** | **Boolean**|  | |
+| **withoutThumbnail** | **Boolean**|  | |
+| **id** | **String**|  | |
+| **files** | **List&lt;File&gt;**|  | |
+
+### Return type
+
+[**FileUploadV2**](FileUploadV2.md)
 
 ### Authorization
 
