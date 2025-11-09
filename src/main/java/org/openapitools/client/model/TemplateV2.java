@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * TemplateV2
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-09T19:55:44.935759181+01:00[Europe/Brussels]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-09T20:21:08.567589265+01:00[Europe/Brussels]", comments = "Generator version: 7.17.0")
 public class TemplateV2 {
   public static final String SERIALIZED_NAME_ID = "_id";
   @SerializedName(SERIALIZED_NAME_ID)

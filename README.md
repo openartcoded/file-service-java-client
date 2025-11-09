@@ -2,7 +2,7 @@
 
 FileApi
 - API version: 0.9
-  - Build date: 2025-11-09T19:55:44.935759181+01:00[Europe/Brussels]
+  - Build date: 2025-11-09T20:21:08.567589265+01:00[Europe/Brussels]
   - Generator version: 7.17.0
 
 File Api V1
