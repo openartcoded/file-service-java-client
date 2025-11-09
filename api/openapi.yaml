@@ -4,7 +4,7 @@ info:
   license:
     name: ""
   title: FileApi
-  version: "0.5"
+  version: "0.6"
 servers:
 - url: /
 paths:
@@ -226,14 +226,6 @@ paths:
       - explode: true
         in: query
         name: correlation_id
-        required: false
-        schema:
-          nullable: true
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: id
         required: false
         schema:
           nullable: true
@@ -597,9 +589,6 @@ components:
     UploadFileRequestUriParams:
       properties:
         correlation_id:
-          nullable: true
-          type: string
-        id:
           nullable: true
           type: string
         is_public:
