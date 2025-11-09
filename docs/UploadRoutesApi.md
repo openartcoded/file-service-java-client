@@ -6,6 +6,7 @@ All URIs are relative to *http://localhost*
 |------------- | ------------- | -------------|
 | [**deleteById**](UploadRoutesApi.md#deleteById) | **DELETE** /api/v1/upload/{id} |  |
 | [**download**](UploadRoutesApi.md#download) | **GET** /api/v1/upload/download |  |
+| [**downloadBulk**](UploadRoutesApi.md#downloadBulk) | **POST** /api/v1/upload/download-bulk |  |
 | [**findAllUploads**](UploadRoutesApi.md#findAllUploads) | **GET** /api/v1/upload/find-all |  |
 | [**makeThumb**](UploadRoutesApi.md#makeThumb) | **POST** /api/v1/upload/{id}/make-thumb |  |
 | [**metadata**](UploadRoutesApi.md#metadata) | **GET** /api/v1/upload/metadata |  |
@@ -131,6 +132,66 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Download file |  -  |
+
+<a id="downloadBulk"></a>
+# **downloadBulk**
+> File downloadBulk(downloadBulkRequestUriParams)
+
+
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.UploadRoutesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+
+    UploadRoutesApi apiInstance = new UploadRoutesApi(defaultClient);
+    DownloadBulkRequestUriParams downloadBulkRequestUriParams = new DownloadBulkRequestUriParams(); // DownloadBulkRequestUriParams | 
+    try {
+      File result = apiInstance.downloadBulk(downloadBulkRequestUriParams);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UploadRoutesApi#downloadBulk");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **downloadBulkRequestUriParams** | [**DownloadBulkRequestUriParams**](DownloadBulkRequestUriParams.md)|  | |
+
+### Return type
+
+[**File**](File.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Download multiple files as a zip |  -  |
 
 <a id="findAllUploads"></a>
 # **findAllUploads**
@@ -369,7 +430,7 @@ No authorization required
 
 <a id="upload"></a>
 # **upload**
-> FileUploadV2 upload(fileBytes, correlationId, id, isPublic, withoutThumbnail)
+> FileUploadV2 upload(files, correlationId, id, isPublic, withoutThumbnail)
 
 
 
@@ -388,13 +449,13 @@ public class Example {
     defaultClient.setBasePath("http://localhost");
 
     UploadRoutesApi apiInstance = new UploadRoutesApi(defaultClient);
-    File fileBytes = new File("/path/to/file"); // File | 
+    List<File> files = Arrays.asList(); // List<File> | 
     String correlationId = "correlationId_example"; // String | 
     String id = "id_example"; // String | 
     Boolean isPublic = true; // Boolean | 
     Boolean withoutThumbnail = true; // Boolean | 
     try {
-      FileUploadV2 result = apiInstance.upload(fileBytes, correlationId, id, isPublic, withoutThumbnail);
+      FileUploadV2 result = apiInstance.upload(files, correlationId, id, isPublic, withoutThumbnail);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UploadRoutesApi#upload");
@@ -411,7 +472,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fileBytes** | **File**|  | |
+| **files** | **List&lt;File&gt;**|  | |
 | **correlationId** | **String**|  | [optional] |
 | **id** | **String**|  | [optional] |
 | **isPublic** | **Boolean**|  | [optional] |

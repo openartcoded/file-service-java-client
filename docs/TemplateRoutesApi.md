@@ -431,7 +431,7 @@ No authorization required
 
 <a id="upsert"></a>
 # **upsert**
-> TemplateV2 upsert(title, templateType, templateContext, fileBytes, id, description)
+> TemplateV2 upsert(title, templateType, templateContext, files, id, description)
 
 
 
@@ -453,11 +453,11 @@ public class Example {
     String title = "title_example"; // String | 
     TemplateType templateType = TemplateType.fromValue("HTML"); // TemplateType | 
     Context templateContext = Context.fromValue("INVOICE"); // Context | 
-    File fileBytes = new File("/path/to/file"); // File | 
+    List<File> files = Arrays.asList(); // List<File> | 
     String id = "id_example"; // String | 
     String description = "description_example"; // String | 
     try {
-      TemplateV2 result = apiInstance.upsert(title, templateType, templateContext, fileBytes, id, description);
+      TemplateV2 result = apiInstance.upsert(title, templateType, templateContext, files, id, description);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TemplateRoutesApi#upsert");
@@ -477,7 +477,7 @@ public class Example {
 | **title** | **String**|  | |
 | **templateType** | [**TemplateType**](.md)|  | [enum: HTML, XML] |
 | **templateContext** | [**Context**](.md)|  | [enum: INVOICE, PEPPOL, C_V] |
-| **fileBytes** | **File**|  | |
+| **files** | **List&lt;File&gt;**|  | |
 | **id** | **String**|  | [optional] |
 | **description** | **String**|  | [optional] |
 

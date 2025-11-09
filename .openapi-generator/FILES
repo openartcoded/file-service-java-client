@@ -6,6 +6,7 @@ api/openapi.yaml
 build.gradle
 build.sbt
 docs/Context.md
+docs/DownloadBulkRequestUriParams.md
 docs/DownloadFileRequestUriParams.md
 docs/FileUploadV2.md
 docs/FindAllQueryParams.md
@@ -46,6 +47,7 @@ src/main/java/org/openapitools/client/auth/HttpBasicAuth.java
 src/main/java/org/openapitools/client/auth/HttpBearerAuth.java
 src/main/java/org/openapitools/client/model/AbstractOpenApiSchema.java
 src/main/java/org/openapitools/client/model/Context.java
+src/main/java/org/openapitools/client/model/DownloadBulkRequestUriParams.java
 src/main/java/org/openapitools/client/model/DownloadFileRequestUriParams.java
 src/main/java/org/openapitools/client/model/FileUploadV2.java
 src/main/java/org/openapitools/client/model/FindAllQueryParams.java
@@ -54,3 +56,4 @@ src/main/java/org/openapitools/client/model/TemplateType.java
 src/main/java/org/openapitools/client/model/TemplateUpsert.java
 src/main/java/org/openapitools/client/model/TemplateV2.java
 src/main/java/org/openapitools/client/model/UploadFileRequestUriParams.java
+src/test/java/org/openapitools/client/model/DownloadBulkRequestUriParamsTest.java

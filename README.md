@@ -1,8 +1,8 @@
 # openapi-java-client
 
 FileApi
-- API version: 0.4
-  - Build date: 2025-11-01T12:23:40.370796367+01:00[Europe/Brussels]
+- API version: 0.5
+  - Build date: 2025-11-09T14:20:55.898518444+01:00[Europe/Brussels]
   - Generator version: 7.17.0
 
 File Api V1
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>openapi-java-client</artifactId>
-  <version>0.4</version>
+  <version>0.5</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "org.openapitools:openapi-java-client:0.4"
+     implementation "org.openapitools:openapi-java-client:0.5"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/openapi-java-client-0.4.jar`
+* `target/openapi-java-client-0.5.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
 *TemplateRoutesApi* | [**upsert**](docs/TemplateRoutesApi.md#upsert) | **POST** /api/v1/template | 
 *UploadRoutesApi* | [**deleteById**](docs/UploadRoutesApi.md#deleteById) | **DELETE** /api/v1/upload/{id} | 
 *UploadRoutesApi* | [**download**](docs/UploadRoutesApi.md#download) | **GET** /api/v1/upload/download | 
+*UploadRoutesApi* | [**downloadBulk**](docs/UploadRoutesApi.md#downloadBulk) | **POST** /api/v1/upload/download-bulk | 
 *UploadRoutesApi* | [**findAllUploads**](docs/UploadRoutesApi.md#findAllUploads) | **GET** /api/v1/upload/find-all | 
 *UploadRoutesApi* | [**makeThumb**](docs/UploadRoutesApi.md#makeThumb) | **POST** /api/v1/upload/{id}/make-thumb | 
 *UploadRoutesApi* | [**metadata**](docs/UploadRoutesApi.md#metadata) | **GET** /api/v1/upload/metadata | 
@@ -134,6 +135,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Context](docs/Context.md)
+ - [DownloadBulkRequestUriParams](docs/DownloadBulkRequestUriParams.md)
  - [DownloadFileRequestUriParams](docs/DownloadFileRequestUriParams.md)
  - [FileUploadV2](docs/FileUploadV2.md)
  - [FindAllQueryParams](docs/FindAllQueryParams.md)

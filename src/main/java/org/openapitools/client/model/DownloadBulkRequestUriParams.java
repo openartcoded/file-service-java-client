@@ -21,7 +21,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,34 +50,42 @@ import java.util.Locale;
 import org.openapitools.client.JSON;
 
 /**
- * DownloadFileRequestUriParams
+ * DownloadBulkRequestUriParams
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-09T14:20:55.898518444+01:00[Europe/Brussels]", comments = "Generator version: 7.17.0")
-public class DownloadFileRequestUriParams {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+public class DownloadBulkRequestUriParams {
+  public static final String SERIALIZED_NAME_IDS = "ids";
+  @SerializedName(SERIALIZED_NAME_IDS)
   @javax.annotation.Nonnull
-  private String id;
+  private List<String> ids = new ArrayList<>();
 
-  public DownloadFileRequestUriParams() {
+  public DownloadBulkRequestUriParams() {
   }
 
-  public DownloadFileRequestUriParams id(@javax.annotation.Nonnull String id) {
-    this.id = id;
+  public DownloadBulkRequestUriParams ids(@javax.annotation.Nonnull List<String> ids) {
+    this.ids = ids;
+    return this;
+  }
+
+  public DownloadBulkRequestUriParams addIdsItem(String idsItem) {
+    if (this.ids == null) {
+      this.ids = new ArrayList<>();
+    }
+    this.ids.add(idsItem);
     return this;
   }
 
   /**
-   * Get id
-   * @return id
+   * Get ids
+   * @return ids
    */
   @javax.annotation.Nonnull
-  public String getId() {
-    return id;
+  public List<String> getIds() {
+    return ids;
   }
 
-  public void setId(@javax.annotation.Nonnull String id) {
-    this.id = id;
+  public void setIds(@javax.annotation.Nonnull List<String> ids) {
+    this.ids = ids;
   }
 
 
@@ -88,20 +98,20 @@ public class DownloadFileRequestUriParams {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DownloadFileRequestUriParams downloadFileRequestUriParams = (DownloadFileRequestUriParams) o;
-    return Objects.equals(this.id, downloadFileRequestUriParams.id);
+    DownloadBulkRequestUriParams downloadBulkRequestUriParams = (DownloadBulkRequestUriParams) o;
+    return Objects.equals(this.ids, downloadBulkRequestUriParams.ids);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(ids);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DownloadFileRequestUriParams {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("class DownloadBulkRequestUriParams {\n");
+    sb.append("    ids: ").append(toIndentedString(ids)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -123,42 +133,45 @@ public class DownloadFileRequestUriParams {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("id"));
+    openapiFields = new HashSet<String>(Arrays.asList("ids"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("id"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("ids"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to DownloadFileRequestUriParams
+   * @throws IOException if the JSON Element is invalid with respect to DownloadBulkRequestUriParams
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!DownloadFileRequestUriParams.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in DownloadFileRequestUriParams is not found in the empty JSON string", DownloadFileRequestUriParams.openapiRequiredFields.toString()));
+        if (!DownloadBulkRequestUriParams.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in DownloadBulkRequestUriParams is not found in the empty JSON string", DownloadBulkRequestUriParams.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!DownloadFileRequestUriParams.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `DownloadFileRequestUriParams` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!DownloadBulkRequestUriParams.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `DownloadBulkRequestUriParams` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DownloadFileRequestUriParams.openapiRequiredFields) {
+      for (String requiredField : DownloadBulkRequestUriParams.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      // ensure the required json array is present
+      if (jsonObj.get("ids") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("ids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `ids` to be an array in the JSON string but got `%s`", jsonObj.get("ids").toString()));
       }
   }
 
@@ -166,22 +179,22 @@ public class DownloadFileRequestUriParams {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DownloadFileRequestUriParams.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DownloadFileRequestUriParams' and its subtypes
+       if (!DownloadBulkRequestUriParams.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DownloadBulkRequestUriParams' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DownloadFileRequestUriParams> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DownloadFileRequestUriParams.class));
+       final TypeAdapter<DownloadBulkRequestUriParams> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DownloadBulkRequestUriParams.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<DownloadFileRequestUriParams>() {
+       return (TypeAdapter<T>) new TypeAdapter<DownloadBulkRequestUriParams>() {
            @Override
-           public void write(JsonWriter out, DownloadFileRequestUriParams value) throws IOException {
+           public void write(JsonWriter out, DownloadBulkRequestUriParams value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public DownloadFileRequestUriParams read(JsonReader in) throws IOException {
+           public DownloadBulkRequestUriParams read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -192,18 +205,18 @@ public class DownloadFileRequestUriParams {
   }
 
   /**
-   * Create an instance of DownloadFileRequestUriParams given an JSON string
+   * Create an instance of DownloadBulkRequestUriParams given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of DownloadFileRequestUriParams
-   * @throws IOException if the JSON string is invalid with respect to DownloadFileRequestUriParams
+   * @return An instance of DownloadBulkRequestUriParams
+   * @throws IOException if the JSON string is invalid with respect to DownloadBulkRequestUriParams
    */
-  public static DownloadFileRequestUriParams fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DownloadFileRequestUriParams.class);
+  public static DownloadBulkRequestUriParams fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DownloadBulkRequestUriParams.class);
   }
 
   /**
-   * Convert an instance of DownloadFileRequestUriParams to an JSON string
+   * Convert an instance of DownloadBulkRequestUriParams to an JSON string
    *
    * @return JSON string
    */
