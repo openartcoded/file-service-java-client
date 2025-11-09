@@ -1,8 +1,8 @@
 # openapi-java-client
 
 FileApi
-- API version: 0.8
-  - Build date: 2025-11-09T19:41:02.387928936+01:00[Europe/Brussels]
+- API version: 0.9
+  - Build date: 2025-11-09T19:55:44.935759181+01:00[Europe/Brussels]
   - Generator version: 7.17.0
 
 File Api V1
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>openapi-java-client</artifactId>
-  <version>0.8</version>
+  <version>0.9</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -57,7 +57,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "org.openapitools:openapi-java-client:0.8"
+     implementation "org.openapitools:openapi-java-client:0.9"
   }
 ```
 
@@ -71,7 +71,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/openapi-java-client-0.8.jar`
+* `target/openapi-java-client-0.9.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -122,15 +122,15 @@ Class | Method | HTTP request | Description
 *TemplateRoutesApi* | [**findOne**](docs/TemplateRoutesApi.md#findOne) | **GET** /api/v1/template/find-one/{templ_id} | 
 *TemplateRoutesApi* | [**render**](docs/TemplateRoutesApi.md#render) | **POST** /api/v1/template/render | 
 *TemplateRoutesApi* | [**upsert**](docs/TemplateRoutesApi.md#upsert) | **POST** /api/v1/template | 
-*UploadRoutesApi* | [**deleteById**](docs/UploadRoutesApi.md#deleteById) | **DELETE** /api/v1/upload/{id} | 
-*UploadRoutesApi* | [**download**](docs/UploadRoutesApi.md#download) | **GET** /api/v1/upload/download | 
-*UploadRoutesApi* | [**downloadBulk**](docs/UploadRoutesApi.md#downloadBulk) | **POST** /api/v1/upload/download-bulk | 
-*UploadRoutesApi* | [**findAllUploads**](docs/UploadRoutesApi.md#findAllUploads) | **GET** /api/v1/upload/find-all | 
-*UploadRoutesApi* | [**makeThumb**](docs/UploadRoutesApi.md#makeThumb) | **POST** /api/v1/upload/{id}/make-thumb | 
-*UploadRoutesApi* | [**metadata**](docs/UploadRoutesApi.md#metadata) | **GET** /api/v1/upload/metadata | 
-*UploadRoutesApi* | [**ping**](docs/UploadRoutesApi.md#ping) | **GET** /api/v1/upload/ping | 
-*UploadRoutesApi* | [**upload**](docs/UploadRoutesApi.md#upload) | **POST** /api/v1/upload | 
-*UploadRoutesApi* | [**uploadUpdate**](docs/UploadRoutesApi.md#uploadUpdate) | **POST** /api/v1/upload/{id}/update | 
+*UploadRoutesDownloadBulkApi* | [**downloadBulk**](docs/UploadRoutesDownloadBulkApi.md#downloadBulk) | **POST** /api/v1/upload/download-bulk | 
+*UploadRoutesFetchAllApi* | [**findAll**](docs/UploadRoutesFetchAllApi.md#findAll) | **GET** /api/v1/upload/find-all | 
+*UploadRoutesFetchByIdApi* | [**download**](docs/UploadRoutesFetchByIdApi.md#download) | **GET** /api/v1/upload/download | 
+*UploadRoutesMakeThumbApi* | [**makeThumb**](docs/UploadRoutesMakeThumbApi.md#makeThumb) | **POST** /api/v1/upload/{id}/make-thumb | 
+*UploadRoutesMetadataApi* | [**metadata**](docs/UploadRoutesMetadataApi.md#metadata) | **GET** /api/v1/upload/metadata | 
+*UploadRoutesPingApi* | [**ping**](docs/UploadRoutesPingApi.md#ping) | **GET** /api/v1/upload/ping | 
+*UploadRoutesStreamuploadApi* | [**upload**](docs/UploadRoutesStreamuploadApi.md#upload) | **POST** /api/v1/upload | 
+*UploadRoutesUplDeleteApi* | [**delete**](docs/UploadRoutesUplDeleteApi.md#delete) | **DELETE** /api/v1/upload/{id} | 
+*UploadRoutesUploadUpdateApi* | [**uploadUpdate**](docs/UploadRoutesUploadUpdateApi.md#uploadUpdate) | **POST** /api/v1/upload/{id}/update | 
 
 
 ## Documentation for Models
@@ -140,6 +140,7 @@ Class | Method | HTTP request | Description
  - [DownloadFileRequestUriParams](docs/DownloadFileRequestUriParams.md)
  - [FileUploadV2](docs/FileUploadV2.md)
  - [FindAllQueryParams](docs/FindAllQueryParams.md)
+ - [OpenApiDocUploadFormSimpleFile](docs/OpenApiDocUploadFormSimpleFile.md)
  - [RenderRequest](docs/RenderRequest.md)
  - [TemplateType](docs/TemplateType.md)
  - [TemplateUpsert](docs/TemplateUpsert.md)
