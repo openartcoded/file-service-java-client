@@ -4,7 +4,7 @@ info:
   license:
     name: ""
   title: FileApi
-  version: "0.9"
+  version: "0.11"
 servers:
 - url: /
 paths:
@@ -263,7 +263,7 @@ paths:
                 type: array
           description: Upload a file
       tags:
-      - upload::routes::streamupload
+      - upload::routes
       x-content-type: multipart/form-data
       x-accepts:
       - application/json
@@ -287,12 +287,12 @@ paths:
                 type: string
           description: Download file
       tags:
-      - upload::routes::fetch-by-id
+      - upload::routes
       x-accepts:
       - '*/*'
   /api/v1/upload/download-bulk:
     post:
-      operationId: download-bulk
+      operationId: download_bulk
       requestBody:
         content:
           application/json:
@@ -308,13 +308,13 @@ paths:
                 type: string
           description: Download multiple files as a zip
       tags:
-      - upload::routes::download-bulk
+      - upload::routes
       x-content-type: application/json
       x-accepts:
       - '*/*'
   /api/v1/upload/find-all:
     get:
-      operationId: find-all
+      operationId: find_all_uploads
       parameters:
       - explode: true
         in: query
@@ -334,7 +334,7 @@ paths:
                 type: array
           description: Find all upload
       tags:
-      - upload::routes::fetch-all
+      - upload::routes
       x-accepts:
       - application/json
   /api/v1/upload/metadata:
@@ -356,7 +356,7 @@ paths:
                 $ref: "#/components/schemas/FileUploadV2"
           description: Get upload metadata
       tags:
-      - upload::routes::metadata
+      - upload::routes
       x-accepts:
       - application/json
   /api/v1/upload/ping:
@@ -366,12 +366,12 @@ paths:
         "200":
           description: Ping
       tags:
-      - upload::routes::ping
+      - upload::routes
       x-accepts:
       - application/json
   /api/v1/upload/{id}:
     delete:
-      operationId: delete
+      operationId: delete_by_id
       parameters:
       - explode: false
         in: path
@@ -384,12 +384,12 @@ paths:
         "200":
           description: Delete a file by id
       tags:
-      - upload::routes::upl-delete
+      - upload::routes
       x-accepts:
       - application/json
   /api/v1/upload/{id}/make-thumb:
     post:
-      operationId: make-thumb
+      operationId: make_thumb
       parameters:
       - explode: false
         in: path
@@ -406,7 +406,7 @@ paths:
                 $ref: "#/components/schemas/FileUploadV2"
           description: Make thumbnail
       tags:
-      - upload::routes::make-thumb
+      - upload::routes
       x-accepts:
       - application/json
   /api/v1/upload/{id}/update:
@@ -434,7 +434,7 @@ paths:
                 $ref: "#/components/schemas/FileUploadV2"
           description: Upload a file
       tags:
-      - upload::routes::upload-update
+      - upload::routes
       x-content-type: multipart/form-data
       x-accepts:
       - application/json
@@ -539,11 +539,11 @@ components:
       type: string
     OpenApiDocUploadFormSimpleFile:
       properties:
-        files:
+        file:
           format: binary
           type: string
       required:
-      - files
+      - file
     RenderRequest:
       example:
         fileName: fileName
@@ -646,9 +646,9 @@ components:
       - files
     upload_update_request:
       properties:
-        files:
+        file:
           format: binary
           type: string
       required:
-      - files
+      - file
 

@@ -497,7 +497,7 @@ No authorization required
 
 <a id="uploadUpdate"></a>
 # **uploadUpdate**
-> FileUploadV2 uploadUpdate(correlationId, isPublic, withoutThumbnail, id, files)
+> FileUploadV2 uploadUpdate(id, _file)
 
 
 
@@ -516,13 +516,10 @@ public class Example {
     defaultClient.setBasePath("http://localhost");
 
     UploadRoutesApi apiInstance = new UploadRoutesApi(defaultClient);
-    String correlationId = "correlationId_example"; // String | 
-    Boolean isPublic = true; // Boolean | 
-    Boolean withoutThumbnail = true; // Boolean | 
     String id = "id_example"; // String | 
-    List<File> files = Arrays.asList(); // List<File> | 
+    File _file = new File("/path/to/file"); // File | 
     try {
-      FileUploadV2 result = apiInstance.uploadUpdate(correlationId, isPublic, withoutThumbnail, id, files);
+      FileUploadV2 result = apiInstance.uploadUpdate(id, _file);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UploadRoutesApi#uploadUpdate");
@@ -539,11 +536,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **correlationId** | **String**|  | |
-| **isPublic** | **Boolean**|  | |
-| **withoutThumbnail** | **Boolean**|  | |
 | **id** | **String**|  | |
-| **files** | **List&lt;File&gt;**|  | |
+| **_file** | **File**|  | |
 
 ### Return type
 
