@@ -430,7 +430,7 @@ No authorization required
 
 <a id="upload"></a>
 # **upload**
-> FileUploadV2 upload(files, correlationId, isPublic, withoutThumbnail)
+> List&lt;FileUploadV2&gt; upload(files, correlationId, isPublic, withoutThumbnail)
 
 
 
@@ -454,7 +454,7 @@ public class Example {
     Boolean isPublic = true; // Boolean | 
     Boolean withoutThumbnail = true; // Boolean | 
     try {
-      FileUploadV2 result = apiInstance.upload(files, correlationId, isPublic, withoutThumbnail);
+      List<FileUploadV2> result = apiInstance.upload(files, correlationId, isPublic, withoutThumbnail);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UploadRoutesApi#upload");
@@ -478,7 +478,7 @@ public class Example {
 
 ### Return type
 
-[**FileUploadV2**](FileUploadV2.md)
+[**List&lt;FileUploadV2&gt;**](FileUploadV2.md)
 
 ### Authorization
 

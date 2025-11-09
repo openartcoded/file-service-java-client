@@ -4,7 +4,7 @@ info:
   license:
     name: ""
   title: FileApi
-  version: "0.6"
+  version: "0.7"
 servers:
 - url: /
 paths:
@@ -258,7 +258,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/FileUploadV2"
+                items:
+                  $ref: "#/components/schemas/FileUploadV2"
+                type: array
           description: Upload a file
       tags:
       - upload::routes
