@@ -497,7 +497,7 @@ No authorization required
 
 <a id="uploadUpdate"></a>
 # **uploadUpdate**
-> FileUploadV2 uploadUpdate(id, _file)
+> FileUploadV2 uploadUpdate(id, _file, correlationId, isPublic, withoutThumbnail, fileUpload)
 
 
 
@@ -518,8 +518,12 @@ public class Example {
     UploadRoutesApi apiInstance = new UploadRoutesApi(defaultClient);
     String id = "id_example"; // String | 
     File _file = new File("/path/to/file"); // File | 
+    String correlationId = "correlationId_example"; // String | 
+    Boolean isPublic = true; // Boolean | 
+    Boolean withoutThumbnail = true; // Boolean | 
+    FileUploadV2 fileUpload = new FileUploadV2(); // FileUploadV2 | 
     try {
-      FileUploadV2 result = apiInstance.uploadUpdate(id, _file);
+      FileUploadV2 result = apiInstance.uploadUpdate(id, _file, correlationId, isPublic, withoutThumbnail, fileUpload);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UploadRoutesApi#uploadUpdate");
@@ -538,6 +542,10 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**|  | |
 | **_file** | **File**|  | |
+| **correlationId** | **String**|  | [optional] |
+| **isPublic** | **Boolean**|  | [optional] |
+| **withoutThumbnail** | **Boolean**|  | [optional] |
+| **fileUpload** | [**FileUploadV2**](FileUploadV2.md)|  | [optional] |
 
 ### Return type
 
@@ -555,5 +563,5 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Upload a file |  -  |
+| **200** | Upload (and update) a file |  -  |
 

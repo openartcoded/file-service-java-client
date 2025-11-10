@@ -4,7 +4,7 @@ info:
   license:
     name: ""
   title: FileApi
-  version: "0.11"
+  version: "0.12"
 servers:
 - url: /
 paths:
@@ -413,6 +413,30 @@ paths:
     post:
       operationId: upload_update
       parameters:
+      - explode: true
+        in: query
+        name: correlation_id
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: is_public
+        required: false
+        schema:
+          nullable: true
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: without_thumbnail
+        required: false
+        schema:
+          nullable: true
+          type: boolean
+        style: form
       - explode: false
         in: path
         name: id
@@ -432,7 +456,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/FileUploadV2"
-          description: Upload a file
+          description: Upload (and update) a file
       tags:
       - upload::routes
       x-content-type: multipart/form-data
@@ -542,6 +566,8 @@ components:
         file:
           format: binary
           type: string
+        file_upload:
+          $ref: "#/components/schemas/FileUploadV2"
       required:
       - file
     RenderRequest:
@@ -649,6 +675,8 @@ components:
         file:
           format: binary
           type: string
+        file_upload:
+          $ref: "#/components/schemas/FileUploadV2"
       required:
       - file
 
