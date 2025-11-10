@@ -4,7 +4,7 @@ info:
   license:
     name: ""
   title: FileApi
-  version: "0.12"
+  version: "0.13"
 servers:
 - url: /
 paths:
@@ -566,8 +566,6 @@ components:
         file:
           format: binary
           type: string
-        file_upload:
-          $ref: "#/components/schemas/FileUploadV2"
       required:
       - file
     RenderRequest:
@@ -675,8 +673,6 @@ components:
         file:
           format: binary
           type: string
-        file_upload:
-          $ref: "#/components/schemas/FileUploadV2"
       required:
       - file
 

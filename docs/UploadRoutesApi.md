@@ -497,7 +497,7 @@ No authorization required
 
 <a id="uploadUpdate"></a>
 # **uploadUpdate**
-> FileUploadV2 uploadUpdate(id, _file, correlationId, isPublic, withoutThumbnail, fileUpload)
+> FileUploadV2 uploadUpdate(id, _file, correlationId, isPublic, withoutThumbnail)
 
 
 
@@ -521,9 +521,8 @@ public class Example {
     String correlationId = "correlationId_example"; // String | 
     Boolean isPublic = true; // Boolean | 
     Boolean withoutThumbnail = true; // Boolean | 
-    FileUploadV2 fileUpload = new FileUploadV2(); // FileUploadV2 | 
     try {
-      FileUploadV2 result = apiInstance.uploadUpdate(id, _file, correlationId, isPublic, withoutThumbnail, fileUpload);
+      FileUploadV2 result = apiInstance.uploadUpdate(id, _file, correlationId, isPublic, withoutThumbnail);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UploadRoutesApi#uploadUpdate");
@@ -545,7 +544,6 @@ public class Example {
 | **correlationId** | **String**|  | [optional] |
 | **isPublic** | **Boolean**|  | [optional] |
 | **withoutThumbnail** | **Boolean**|  | [optional] |
-| **fileUpload** | [**FileUploadV2**](FileUploadV2.md)|  | [optional] |
 
 ### Return type
 
