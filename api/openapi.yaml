@@ -4,7 +4,7 @@ info:
   license:
     name: ""
   title: FileApi
-  version: "0.13"
+  version: "0.15"
 servers:
 - url: /
 paths:
@@ -201,6 +201,31 @@ paths:
       x-content-type: application/json
       x-accepts:
       - '*/*'
+  /api/v1/template/variables/{templ_id}:
+    get:
+      operationId: variables
+      parameters:
+      - explode: false
+        in: path
+        name: templ_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: "Variables a template reads without setting them (e.g. invoice.total),\
+            \ sorted"
+      tags:
+      - template::routes
+      x-accepts:
+      - application/json
   /api/v1/template/{id}:
     delete:
       operationId: delete_templ_by_id
@@ -468,7 +493,12 @@ components:
       enum:
       - INVOICE
       - PEPPOL
-      - C_V
+      - CV
+      - TIMESHEET
+      - EMAIL
+      - ACTION
+      - SMS
+      - CALENDAR
       type: string
     DownloadBulkRequestUriParams:
       example:
@@ -591,6 +621,7 @@ components:
       enum:
       - HTML
       - XML
+      - TEXT
       type: string
     TemplateUpsert:
       properties:

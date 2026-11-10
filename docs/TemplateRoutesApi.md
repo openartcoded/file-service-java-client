@@ -12,6 +12,7 @@ All URIs are relative to *http://localhost*
 | [**findOne**](TemplateRoutesApi.md#findOne) | **GET** /api/v1/template/find-one/{templ_id} |  |
 | [**render**](TemplateRoutesApi.md#render) | **POST** /api/v1/template/render |  |
 | [**upsert**](TemplateRoutesApi.md#upsert) | **POST** /api/v1/template |  |
+| [**variables**](TemplateRoutesApi.md#variables) | **GET** /api/v1/template/variables/{templ_id} |  |
 
 
 <a id="deleteTemplById"></a>
@@ -169,7 +170,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **context** | [**Context**](.md)|  | [enum: INVOICE, PEPPOL, C_V] |
+| **context** | [**Context**](.md)|  | [enum: INVOICE, PEPPOL, CV, TIMESHEET, EMAIL, ACTION, SMS, CALENDAR] |
 
 ### Return type
 
@@ -289,7 +290,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **templateType** | [**TemplateType**](.md)|  | [enum: HTML, XML] |
+| **templateType** | [**TemplateType**](.md)|  | [enum: HTML, XML, TEXT] |
 
 ### Return type
 
@@ -475,8 +476,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **title** | **String**|  | |
-| **templateType** | [**TemplateType**](.md)|  | [enum: HTML, XML] |
-| **templateContext** | [**Context**](.md)|  | [enum: INVOICE, PEPPOL, C_V] |
+| **templateType** | [**TemplateType**](.md)|  | [enum: HTML, XML, TEXT] |
+| **templateContext** | [**Context**](.md)|  | [enum: INVOICE, PEPPOL, CV, TIMESHEET, EMAIL, ACTION, SMS, CALENDAR] |
 | **files** | **List&lt;File&gt;**|  | |
 | **id** | **String**|  | [optional] |
 | **description** | **String**|  | [optional] |
@@ -498,4 +499,64 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Upsert a template |  -  |
+
+<a id="variables"></a>
+# **variables**
+> List&lt;String&gt; variables(templId)
+
+
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.TemplateRoutesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+
+    TemplateRoutesApi apiInstance = new TemplateRoutesApi(defaultClient);
+    String templId = "templId_example"; // String | 
+    try {
+      List<String> result = apiInstance.variables(templId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TemplateRoutesApi#variables");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **templId** | **String**|  | |
+
+### Return type
+
+**List&lt;String&gt;**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Variables a template reads without setting them (e.g. invoice.total), sorted |  -  |
 

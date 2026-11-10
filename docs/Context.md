@@ -9,7 +9,17 @@
 
 * `PEPPOL` (value: `"PEPPOL"`)
 
-* `C_V` (value: `"C_V"`)
+* `CV` (value: `"CV"`)
+
+* `TIMESHEET` (value: `"TIMESHEET"`)
+
+* `EMAIL` (value: `"EMAIL"`)
+
+* `ACTION` (value: `"ACTION"`)
+
+* `SMS` (value: `"SMS"`)
+
+* `CALENDAR` (value: `"CALENDAR"`)
 
 
 
